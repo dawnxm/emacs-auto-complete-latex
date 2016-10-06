@@ -1,0 +1,28 @@
+Emacs Auto Complete LaTeX
+
+Auto Complete LaTeX is an extension of Auto Complete Mode on GNU Emacs.
+
+Auto Complete Mode:  https://github.com/auto-complete/auto-complete
+
+Installation:
+
+1. Put files into your load-path.
+2. Add the following into your .emacs.
+
+;; for auto-complete
+      (setq ac-auto-start 1)
+      (setq ac-auto-show-menu 0.8)
+      (setq ac-menu-height 12)
+      (setq-default ac-expand-on-auto-complete nil)
+      (setq-default ac-auto-start nil)
+      (setq tab-always-indent 'complete)
+      (ac-set-trigger-key "TAB")
+
+;; for auto-complete-latex      
+      (add-to-list 'ac-modes 'latex-mode)
+      (setq ac-l-dict-directory "/path/to/ac-l-dict/")
+      (setq auto-mode-alist
+            (cons '("\\.tex\\'" . latex-mode)
+               auto-mode-alist))
+      (add-hook 'latex-mode-hook 'ac-l-setup)
+      (add-hook 'LaTeX-mode-hook 'ac-l-setup)
